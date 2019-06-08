@@ -1,0 +1,5 @@
+MLP      2   8
+RELU  8   8
+MLP      8   6
+SIGMOID  6   6
+MLP      6   2

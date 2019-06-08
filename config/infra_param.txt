@@ -1,0 +1,4 @@
+learning_rate   1
+batch_size       16
+epoch             1000
+interval           50
