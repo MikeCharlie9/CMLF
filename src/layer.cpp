@@ -72,6 +72,7 @@ void Layer::initWeight()
 
 void Layer::MAC()
 {
+    #pragma omp parallel for
     for (int i = 0; i < output_node; i++)
     {
         data_out.data[0][i] = 0;
@@ -85,6 +86,7 @@ void Layer::MAC()
 
 void Layer::reLU()
 {
+    #pragma omp parallel for
     for (int i = 0; i < output_node; i++)
     {
         if (data_in.data[0][i] <= 0)
@@ -96,6 +98,7 @@ void Layer::reLU()
 
 void Layer::sigmoid()
 {
+    #pragma omp parallel for
     for (int i = 0; i < output_node; i++)
     {
         data_out.data[0][i] = 1 / (1 + exp(-data_in.data[0][i]));
@@ -109,6 +112,7 @@ void Layer::softmax()
     {
         sum += exp(data_in.data[0][i]);
     }
+    #pragma omp parallel for
     for (int i = 0; i < output_node; i++)
     {
         data_out.data[0][i] = exp(data_in.data[0][i]) / sum;

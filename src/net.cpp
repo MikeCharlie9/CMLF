@@ -36,7 +36,7 @@ void Net::init()
 {
     layer_size = layer_mode.size();
     getTime();
-    std::cout << "layer number: " << layer_size << std::endl;
+    std::cout << "layer number: " << layer_size+1 << std::endl;
     layer = new Layer[layer_size + 1];
     for (int i = 0; i < layer_size; i++)
     {
@@ -46,8 +46,11 @@ void Net::init()
         getTime();
         std::cout << "layer " << i << " initial done\tlayer mode: " << layer_mode[i] << "\tlayer node: " << layer_node[i] << std::endl;
     }
+    
     // The last layer of the network is defined as softmax
     layer[layer_size] = Layer(layer_node[layer_size], layer_node[layer_size]);
+    getTime();
+    std::cout << "layer " << layer_size << " initial done\tlayer mode: " << 4 << "\tlayer node: " << layer[layer_size].output_node << std::endl;
 }
 
 void Net::forward()
